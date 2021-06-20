@@ -11,12 +11,15 @@ let ngantuk = false;
 
 // STEP 1: Load the model!
 function preload() {
-  classifier = ml5.imageClassifier('https://storage.googleapis.com/tm-model/Ee4zrkgmb/model.json');
+  classifier = ml5.imageClassifier('https://storage.googleapis.com/tm-model/tVZJXIn3v/model.json');
 }
 preload()
 
 function setup() {
-  createCanvas(640, 520);
+  const cnv = createCanvas(640, 520);
+  let x = (windowWidth - width) / 2;
+  let y = (windowHeight - height) / 2;
+  cnv.position(x, y);
   // Create the video
   video = createCapture(VIDEO);
   video.hide();
@@ -35,6 +38,12 @@ function draw() {
   
   // Draw the video
   image(video, 0, 0);
+  
+  // Draw Back Button
+  // let backButton = createA('http://127.0.0.1:5500/index.html', 'Kembali Ke Halaman Utama');
+  // let x = (windowWidth - width) / 2;
+  // let y = (windowHeight - height) / 2;
+  // backButton.position(x, y);
 
   // STEP 4: Draw the label
   textSize(32)
@@ -43,9 +52,9 @@ function draw() {
 
   if(ngantuk){
    label = 'Anda Mengantuk'
+   text(label, width/2, height -16)
   }
   text(label, width/2, height -16)
-
 }
 
 
@@ -59,7 +68,6 @@ const gotResults = (error, results) => {
   label = results[0].label
   oldResult = label;
 
-  console.log(frame)
   if(oldResult === 'Tutup Mata' || oldResult === 'Menguap'){
     frame += 1
 
