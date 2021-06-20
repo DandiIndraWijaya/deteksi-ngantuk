@@ -11,7 +11,7 @@ let ngantuk = false;
 
 // STEP 1: Load the model!
 function preload() {
-  classifier = ml5.imageClassifier('https://storage.googleapis.com/tm-model/tVZJXIn3v/model.json');
+  classifier = ml5.imageClassifier('./model.json');
 }
 preload()
 
@@ -68,8 +68,8 @@ const gotResults = (error, results) => {
   label = results[0].label
   oldResult = label;
 
-  if(oldResult === 'Tutup Mata' || oldResult === 'Menguap'){
-    frame += 1
+  if(oldResult === 'Mata Tertutup'){
+    frame += 2
 
     if(frame > 100){
       ngantuk = true
@@ -77,7 +77,20 @@ const gotResults = (error, results) => {
       audio.play();
       return
     }
-  }else{
+  }
+
+  else if(oldResult === 'Menguap'){
+    frame += 5
+
+    if(frame > 100){
+      ngantuk = true
+      audio = new Audio('wordplay.mp3');
+      audio.play();
+      return
+    }
+  }
+  
+  else{
     frame = 0
   }
 

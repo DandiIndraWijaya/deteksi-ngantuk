@@ -7,18 +7,21 @@ else
 
 
 workbox.precaching.precacheAndRoute([
-    { url: '/', revision: '1'},
-    { url: '/manifest.json', revision: '1' },
-    { url: '/index.html', revision: '1' },
-    { url: '/deteksi_kantuk.html', revision: '1' },
+    { url: '/', revision: '2'},
+    { url: '/manifest.json', revision: '2' },
+    { url: '/index.html', revision: '2' },
+    { url: '/deteksi_kantuk.html', revision: '3' },
     { url: '/ml5.min.js', revision: '1' },
     { url: '/p5.dom.min.js', revision: '1' },
     { url: '/p5.js', revision: '1' },
     { url: '/p5.sound.min.js', revision: '1' },
-    { url: '/sketch.js', revision: '1' },
+    { url: '/sketch.js', revision: '3' },
     { url: '/style.css', revision: '1' },
     { url: '/supir_tidur.png', revision: '1' },
     { url: '/wordplay.mp3', revision: '1' },
+    { url: '/weights.bin', revision: '1'},
+    { url: '/model.json', revision: '1'},
+    { url: '/metadata.json', revision: '1' },
     // { url: '/css/materialize.min.css', revision: '1' },
     // { url: '/js/materialize.min.js', revision: '1' },
     // { url: '/js/index.js', revision: '1'},
@@ -57,7 +60,7 @@ workbox.routing.registerRoute(
 
 
 // const offlinePage = '/offline_page.html';
-const url = 'http://127.0.0.1:5500/'
+const url = 'https://deteksi-ngantuk.web.app/'
 
 workbox.routing.registerRoute(
   new RegExp(url),
